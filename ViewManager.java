@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.effect.DropShadow;
 import javafx.event.ActionEvent;
 import javafx.animation.AnimationTimer;
+import javafx.scene.shape.Rectangle;
 public class ViewManager {
 
     private static final int HEIGHT = 800;
@@ -26,18 +27,24 @@ public class ViewManager {
     private final static int MENU_BUTTONS_START_Y = 440;
     private Subscene helpSubScene;
 
+    private boolean isThere = false; //for instructions text
+    private Rectangle fullScreen = new Rectangle(WIDTH, HEIGHT, Color.WHITE);
+    
+
     private Subscene sceneToHide;
     List<Button> menuButtons;
     public ViewManager() {
         menuButtons = new ArrayList<>();
         mainPane = new AnchorPane();
-        mainScene = new Scene(mainPane, WIDTH, HEIGHT, Color.BLUE);
+        mainScene = new Scene(mainPane, WIDTH, HEIGHT);
         mainStage = new Stage();
         mainStage.setScene(mainScene);
-
+        fullScreen.setX(0);
+        fullScreen.setY(0);
+        mainPane.getChildren().add(fullScreen);
         createButtons();
         createTitle();
-        createSubScenes();
+        //createSubScenes();
 
     }
 
@@ -67,32 +74,49 @@ public class ViewManager {
         mainPane.getChildren().add(button);
     }
 
-    private void createButtons() {
-        createStartButton();
-        createHelpButton();
-    }
-
     private void createStartButton() {
         Button startButton = new Button("Play");
 
         addMenuButton(startButton);
         startButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                
-            }
-        });
+                @Override
+                public void handle(ActionEvent event) {
+                    GameViewManager gameManager = new GameViewManager();
+                    gameManager.createNewGame(mainStage);
+                }
+          });
 
     }
+
     private void createHelpButton() {
         Button helpButton = new Button("How to Play");
         addMenuButton(helpButton);
-        helpButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+        helpButton.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
-                public void handle(MouseEvent event) {
-                    mainPane.getChildren().add(helpSubScene);
+                public void handle(ActionEvent event) {
+                    Rectangle r = new Rectangle(350, 85, Color.WHITE);
+                    r.setX(500);
+                    r.setY(30);
+                    //mainPane.getChildren().add(r);
+                    Text instructions = new Text(500, 50,
+                            "-Use arrows keys to move\n-Avoid the tiles for as long as possible\n-You have 4 lives\n-If you go off the edge you appear on the other side");
+                            mainPane.getChildren().add(instructions);
+                    if (!isThere) {
+
+                        mainPane.getChildren().remove(r);
+                        isThere = true;
+                    } else {
+                        mainPane.getChildren().add(r);
+                        isThere = false;
+                    }
                 }
-            });
+          });
+    }
+
+    private void createButtons() {
+        createStartButton();
+        createHelpButton();
     }
 
     private void createTitle() {

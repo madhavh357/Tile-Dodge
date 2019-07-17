@@ -27,8 +27,8 @@ public class Player extends Rectangle {
         return lives;
     }
 
-    public void setLives(int amount) {
-        lives = amount;
+    public void setLives(int amt) {
+        lives = amt;
     }
     
     public void moveDown() {
@@ -66,7 +66,7 @@ public class Player extends Rectangle {
         if (getY() > 800) {
             setY(0);
         }
-        if (getY() < 0) {
+        if (getY()+mass*4 < 0) {
             setY(780);
         }
     }
