@@ -199,7 +199,7 @@ public class GameViewManager
         missile.setFill(Color.ORANGE); // sets the color
         PVector force = new PVector(p.getX() - missile.getX(), p.getY() - missile.getY());
         double distance = force.mag(); //takes the magnitude of the force vector
-        double strength = (1.3 * 150 * 170) / (distance * distance);
+        double strength = (1.3 * 100 * 170) / (distance * distance);
         //calculates the force of the gravitational attraction to the player
         
         force.normalize();
@@ -230,7 +230,7 @@ public class GameViewManager
         t += 0.016;
 
         levelUp();
-        double tileSpeed = (level + 1) * 1.5;
+        double tileSpeed = (level + 1) * 1.15;
         player.update();
         movePlayer();
         time.setText("Time: " + (int)t);
@@ -260,7 +260,7 @@ public class GameViewManager
             Rectangle r = new Rectangle(1200, 1000, Color.BLUE);
             gamePane.getChildren().add(r);
             t-=0.016;
-            Text message = new Text(200, 400, "You survived for " + (int)t + " seconds and made it to level " + (level + 1) +". \nRestart the program to try again");
+            Text message = new Text(200, 400, "You survived for " + (int)t + " seconds and made it to level " + (level + 1) +"!");
             message.setFill(Color.WHITE);
             message.setFont(new Font(25));
             gamePane.getChildren().add(message);
