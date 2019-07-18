@@ -1,13 +1,10 @@
-
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * Write a description of JavaFX class TileDodgeMain here.
- *
- * @author (your name)
- * @version (a version number or a date)
+ * shows the game where you have to avoid tiles
+ * @author Madhav
+ * @version 3
  */
 public class TileDodgeMain extends Application
 {

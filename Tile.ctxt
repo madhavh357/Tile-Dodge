@@ -1,9 +1,12 @@
 #BlueJ class context
 comment0.target=Tile
+comment0.text=\n\ an\ obstacle\ of\ the\ player\n\n\ @author\ Madhav\n\ @version\ 3\n
 comment1.params=x\ y\ c
 comment1.target=Tile(int,\ double,\ javafx.scene.paint.Color)
 comment2.params=velX
 comment2.target=void\ move(double)
+comment2.text=\n\ moves\ the\ tile\ by\ a\ certain\ amount\n\ @param\ double\n\ @return\ nothing\n
 comment3.params=
 comment3.target=void\ checkEdges()
+comment3.text=\n\ checks\ if\ it\ is\ on\ the\ edge\n\ @param\ none\n\ @return\ nothing\n
 numComments=4

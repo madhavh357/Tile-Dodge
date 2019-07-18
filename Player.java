@@ -1,13 +1,18 @@
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
-
+/**
+ * creates the main player
+ *
+ * @author Madhav
+ * @version 3
+ */
 public class Player extends Rectangle {
     private boolean gameOver = false;
     private PVector position;
     private PVector velocity;
     private PVector acceleration;
     private int mass;
-    private int lives = 4;
+    private int lives = 6;
     public Player(double x, double y, int mass, Color color) {
         super(mass, mass*4, color);
         this.mass = mass;
@@ -17,29 +22,51 @@ public class Player extends Rectangle {
         setX(position.x);
         setY(position.y);
     }
-
+    /**
+     * moves the player up by accelerating it
+     * @param none
+     * @return nothing
+     */
     public void moveUp() {
         acceleration.set(0, -0.34);
-        //System.out.println(acceleration.y);
     }
-    
+    /**
+     * moves the player down by accelerating it
+     * @param none
+     * @return nothing
+     */
+    public void moveDown() {
+        acceleration.set(0, 0.34);
+    }
+    /**
+     * returns the amount of lives the player has
+     * @param none
+     * @return int
+     */
     public int getLives() {
         return lives;
     }
-
+    /**
+     * sets the player's lives
+     * @param int
+     * @return none
+     */
     public void setLives(int amt) {
         lives = amt;
     }
-    
-    public void moveDown() {
-        acceleration.set(0, 0.34);
-        //System.out.println(acceleration.y);
-    }
-
+    /**
+     * sets the player's acceleration to 0
+     * @param none
+     * @return nothing
+     */
     public void slow() {
         acceleration.set(0, 0);
     }
-
+    /**
+     * checks for collision with tiles
+     * @param Tile
+     * @return nothing
+     */
     public void checkForTiles(Tile tile) {
         if ((getX() + mass > tile.getX()) && (getX() < tile.getX()+30) && 
         (getY() + mass*4 > tile.getY()) && (getY() < tile.getY() + 30)) {
@@ -49,7 +76,11 @@ public class Player extends Rectangle {
         }
     }
     
-
+    /**
+     * updates position, velocity, lives, and checks edges
+     * @param none
+     * @return nothing
+     */
     public void update() {
         velocity.add(acceleration);
         setX(getX()+velocity.x);
@@ -70,7 +101,21 @@ public class Player extends Rectangle {
             setY(780);
         }
     }
-    
-    
+    /**
+     * returns gameOver
+     * @param none
+     * @return boolean
+     */
+    public boolean getGameOver() {
+        return gameOver;
+    }
+    /**
+     * sets gameOver
+     * @param boolean
+     * @return nothing
+     */
+    public void setGameOver(boolean c) {
+        gameOver = c;
+    }
 
 }

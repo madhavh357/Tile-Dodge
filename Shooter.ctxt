@@ -1,8 +1,6 @@
 #BlueJ class context
 comment0.target=Shooter
-comment0.text=\n\ Write\ a\ description\ of\ class\ ShooterTile\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ a\ tile\ that\ can\ shoot\ missiles\n\n\ @author\ Madhav\n\ @version\ 3\n
 comment1.params=x\ y\ c
 comment1.target=Shooter(int,\ double,\ javafx.scene.paint.Color)
-comment2.params=p\ root\ speed
-comment2.target=void\ shoot(Player,\ javafx.scene.layout.Pane,\ double)
-numComments=3
+numComments=2
